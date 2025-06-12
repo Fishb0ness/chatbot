@@ -1,0 +1,115 @@
+{
+  "companyName": "Your Company Name",
+  "brandVoice": "Professional",
+  "industry": "Your Industry",
+  "mainOfficeLocation": "Your Location",
+  "primaryTools": [
+    "Portfolio Manager",
+    "Design Showcase",
+    "Consultation Scheduler",
+    "Quote Generator",
+    "Client Project Portal"
+  ],
+  "services": {
+    "basicLandingPage": {
+      "name": "Basic Landing Page",
+      "price": 799,
+      "timeline": "1-2 weeks",
+      "features": [
+        "Single page professional design",
+        "Mobile responsive layout",
+        "Up to 5 content sections",
+        "Contact form integration",
+        "Social media links",
+        "2 revision rounds"
+      ],
+      "bestFor": "Freelancers, new startups, local service providers with simple needs"
+    },
+    "extendedBasicPage": {
+      "name": "Extended Basic Page with SEO",
+      "price": 1499,
+      "timeline": "2-3 weeks",
+      "features": [
+        "Single or multi-page professional design",
+        "Mobile responsive layout",
+        "Basic SEO optimization",
+        "Google Maps integration",
+        "Advanced contact forms",
+        "Google Analytics setup",
+        "Additional content sections as needed",
+        "2 revision rounds"
+      ],
+      "bestFor": "Local retail stores, professional services, established small businesses"
+    },
+    "advancedServiceWebsite": {
+      "name": "Advanced Service Business Website",
+      "price": 2399,
+      "timeline": "3-4 weeks",
+      "features": [
+        "Extended page features plus",
+        "Online appointment/booking system",
+        "Third-party integrations (Calendar)",
+        "Stripe/PayPal payment processing",
+        "Customer reviews management",
+        "Premium design elements",
+        "3 revision rounds"
+      ],
+      "bestFor": "Restaurants, salons, medical offices, fitness studios, consultancies"
+    },
+    "ecommerceWebsite": {
+      "name": "E-commerce Website",
+      "price": 3999,
+      "timeline": "4-6 weeks",
+      "features": [
+        "Complete online store setup",
+        "Product catalog (up to 50 products)",
+        "Secure payment processing",
+        "Inventory management",
+        "Order notification system",
+        "Mobile-optimized shopping experience",
+        "3 revision rounds"
+      ],
+      "bestFor": "Retailers, product-based businesses, brands with multiple offerings"
+    }
+  },
+  "taskCategories": [
+    {
+      "name": "Product Information",
+      "keywords": ["product", "feature", "capability", "specification", "function", "integration", "compatibility", "requirement", "tech", "specs"],
+      "escalationContact": "product-support@yourcompany.com"
+    },
+    {
+      "name": "Pricing & Plans",
+      "keywords": ["price", "cost", "subscription", "plan", "tier", "package", "discount", "promotion", "trial", "free", "demo", "expensive", "cheap", "affordable"],
+      "escalationContact": "sales@yourcompany.com"
+    },
+    {
+      "name": "Comparison & Competition",
+      "keywords": ["compare", "vs", "competitor", "alternative", "difference", "better", "advantage", "disadvantage", "similar", "other"],
+      "escalationContact": "sales@yourcompany.com"
+    },
+    {
+      "name": "Purchase & Setup",
+      "keywords": ["buy", "purchase", "order", "checkout", "payment", "sign up", "register", "account", "setup", "install", "download", "start", "begin"],
+      "escalationContact": "customer-onboarding@yourcompany.com"
+    },
+    {
+      "name": "Support & Troubleshooting",
+      "keywords": ["help", "issue", "problem", "error", "bug", "fix", "trouble", "not working", "broken", "question", "how to"],
+      "escalationContact": "support@yourcompany.com"
+    }
+  ],
+  "knowledgeBase": {
+    "productDocumentation": "path/to/products",
+    "pricingInformation": "path/to/pricing",
+    "competitorComparisons": "path/to/comparisons",
+    "customerFAQs": "path/to/faqs",
+    "tutorialsAndGuides": "path/to/tutorials",
+    "testimonials": "path/to/testimonials"
+  },
+  "securitySettings": {
+    "requireAuthentication": true,
+    "sensitiveDataCategories": ["personal employee info", "financial data", "client information"],
+    "loggingLevel": "moderate"
+  }
+}

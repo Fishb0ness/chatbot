@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Design Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+        }
+        
+        .sidebar h1 {
+            margin-top: 0;
+            font-size: 1.5em;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar li {
+            padding: 10px 0;
+            border-bottom: 1px solid #34495e;
+            cursor: pointer;
+        }
+        
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .chat-container {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .chat-input {
+            display: flex;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #ddd;
+        }
+        
+        .chat-input input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .chat-input button {
+            padding: 12px 20px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            align-self: flex-end;
+            margin-left: auto;
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 18px 18px 0 18px;
+        }
+        
+        .bot-message {
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            border-radius: 18px 18px 18px 0;
+        }
+
+        .bot-message-category {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+        }
+        
+        .messages-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .typing-indicator {
+            padding: 10px 15px;
+            background-color: #f1f1f1;
+            border-radius: 18px 18px 18px 0;
+            display: inline-block;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        .typing-indicator span {
+            height: 10px;
+            width: 10px;
+            float: left;
+            margin: 0 1px;
+            background-color: #9E9EA1;
+            display: block;
+            border-radius: 50%;
+            opacity: 0.4;
+            animation: typing 1s infinite;
+        }
+
+        .typing-indicator span:nth-of-type(1) { animation-delay: 0s; }
+        .typing-indicator span:nth-of-type(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-of-type(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0% { opacity: 0.4; transform: scale(1); }
+            20% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.4; transform: scale(1); }
+        }
+
+        .feedback-container {
+            margin-top: 5px;
+            font-size: 12px;
+        }
+
+        .feedback-button {
+            background: none;
+            border: 1px solid #ddd;
+            padding: 3px 8px;
+            margin-right: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .feedback-button:hover {
+            background-color: #f5f5f5;
+        }
+
+        .company-name {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>    <div class="container">        <div class="sidebar">
+            <h1>Web Design</h1>
+            <div class="company-name">Company Name</div>
+            <h3>Our Services</h3>
+            <ul>
+                <li data-query="Tell me about your basic landing page package">Basic Landing Page</li>
+                <li data-query="What's included in the extended page with SEO?">Extended Page with SEO</li>
+                <li data-query="Tell me about websites for restaurants and salons">Service Business Websites</li>
+                <li data-query="What features does your e-commerce website include?">E-commerce Solutions</li>
+                <li data-query="How much do your websites cost?">Pricing Information</li>
+                <li data-query="How do I get started with a website project?">Start Your Project</li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="chat-container">                <div class="messages-container">
+                    <div class="message bot-message">
+                        <div>Hello! I'm your Web Design Assistant. I can help you choose the perfect website package for your small business. Whether you need a simple landing page, an SEO-optimized site, a service business website with appointment booking, or a complete e-commerce solution, I'm here to guide you. How can I help with your online presence today?</div>
+                        <div class="bot-message-category">Welcome</div>
+                    </div>
+                    <div class="typing-indicator">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Type your message here..." id="message-input">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Generate a random user ID for this session (in production, use actual user authentication)
+        const userId = 'user_' + Math.random().toString(36).substring(2, 15);
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const messageInput = document.getElementById('message-input');
+            const sendButton = document.getElementById('send-button');
+            const messagesContainer = document.querySelector('.messages-container');
+            const quickLinks = document.querySelectorAll('.sidebar li');
+            const typingIndicator = document.querySelector('.typing-indicator');
+            
+            // Function to load company configuration
+            async function loadCompanyConfig() {
+                try {
+                    const response = await fetch('/chatbot-config.json');
+                    const config = await response.json();
+                    document.querySelector('.company-name').textContent = config.companyName;
+                    document.title = `${config.companyName} - Enterprise Assistant`;
+                } catch (error) {
+                    console.error('Error loading company configuration:', error);
+                }
+            }
+            
+            loadCompanyConfig();
+            
+            // Function to send a message to the server
+            async function sendMessage(message, context = {}) {
+                // Add user message to chat
+                const userMessageElement = document.createElement('div');
+                userMessageElement.classList.add('message', 'user-message');
+                userMessageElement.textContent = message;
+                messagesContainer.appendChild(userMessageElement);
+                
+                // Show typing indicator
+                typingIndicator.style.display = 'block';
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                
+                try {
+                    // Send message to server
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            message,
+                            userId,
+                            context
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Hide typing indicator
+                    typingIndicator.style.display = 'none';
+                    
+                    // Add bot response to chat
+                    const botMessageElement = document.createElement('div');
+                    botMessageElement.classList.add('message', 'bot-message');
+                    
+                    // Create message text
+                    const messageTextElement = document.createElement('div');
+                    messageTextElement.innerHTML = data.message.replace(/\n/g, '<br>');
+                    botMessageElement.appendChild(messageTextElement);
+                    
+                    // Add category if available
+                    if (data.category) {
+                        const categoryElement = document.createElement('div');
+                        categoryElement.classList.add('bot-message-category');
+                        categoryElement.textContent = data.category;
+                        botMessageElement.appendChild(categoryElement);
+                    }
+                    
+                    // Add feedback buttons
+                    const feedbackElement = document.createElement('div');
+                    feedbackElement.classList.add('feedback-container');
+                    feedbackElement.innerHTML = `
+                        <button class="feedback-button" data-rating="positive">👍</button>
+                        <button class="feedback-button" data-rating="negative">👎</button>
+                    `;
+                    botMessageElement.appendChild(feedbackElement);
+                    
+                    // Add the message to the chat
+                    messagesContainer.appendChild(botMessageElement);
+                    
+                    // Setup feedback buttons
+                    feedbackElement.querySelectorAll('.feedback-button').forEach(button => {
+                        button.addEventListener('click', async function() {
+                            const rating = this.getAttribute('data-rating');
+                            try {
+                                await fetch('/api/feedback', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json'
+                                    },
+                                    body: JSON.stringify({
+                                        userId,
+                                        messageId: Date.now().toString(), // In production use actual message IDs
+                                        rating,
+                                        comment: null
+                                    })
+                                });
+                                
+                                // Visual feedback
+                                feedbackElement.innerHTML = 'Thanks for your feedback!';
+                            } catch (error) {
+                                console.error('Error sending feedback:', error);
+                            }
+                        });
+                    });
+                    
+                    // Scroll to bottom
+                    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+                    
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    typingIndicator.style.display = 'none';
+                    
+                    // Show error message
+                    const errorElement = document.createElement('div');
+                    errorElement.classList.add('message', 'bot-message');
+                    errorElement.textContent = 'Sorry, there was an error processing your request. Please try again.';
+                    messagesContainer.appendChild(errorElement);
+                }
+            }
+            
+            // Event listener for send button
+            sendButton.addEventListener('click', function() {
+                const message = messageInput.value.trim();
+                if (message) {
+                    sendMessage(message);
+                    messageInput.value = '';
+                }
+            });
+            
+            // Event listener for Enter key
+            messageInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const message = messageInput.value.trim();
+                    if (message) {
+                        sendMessage(message);
+                        messageInput.value = '';
+                    }
+                }
+            });
+            
+            // Event listeners for quick links
+            quickLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    const query = this.getAttribute('data-query');
+                    if (query) {
+                        messageInput.value = query;
+                        sendButton.click();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
