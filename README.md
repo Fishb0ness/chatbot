@@ -101,8 +101,14 @@ To add new capabilities:
 
 ## License
 
-[Your License Information]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
-For questions or issues, please contact [your contact information].
+**Please note: This project is provided as-is with no support.** This is an open-source project released under the MIT license. While you are free to use, modify, and distribute the code, no technical support, maintenance, or updates are provided by the original authors.
+
+If you encounter issues:
+- Check the documentation and troubleshooting section above
+- Review the code and configuration files
+- Search for similar issues in the community
+- Consider hiring a developer if you need professional assistance
